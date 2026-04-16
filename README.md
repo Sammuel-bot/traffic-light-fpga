@@ -27,10 +27,18 @@ crossing support, dual-intersection coordination, and a countdown timer output.
 | Vivado (planned) | Synthesis and Basys 3 FPGA deployment |
 
 ## Project Structure
-- `src/traffic_light_controller.v` — Main FSM design
-- `tb/tb_traffic_light.v` — Testbench
-- `sim/traffic_light.vcd` — Simulation waveform data
-- `docs/waveform.png` — GTKWave verification screenshot
+```
+traffic-light-fpga/
+├── src/
+│   └── traffic_light_controller.v   ← Main FSM design
+├── tb/
+│   └── tb_traffic_light.v           ← Testbench
+├── sim/
+│   └── traffic_light.vcd            ← Simulation waveform data
+├── docs/
+│   └── waveform.png                 ← GTKWave verification screenshot
+└── README.md
+```
 
 ## How to Simulate
 **Requirements:** Icarus Verilog, GTKWave
