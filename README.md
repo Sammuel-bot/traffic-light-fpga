@@ -62,25 +62,13 @@ gtkwave sim/traffic_light.vcd
 ![Simulation Waveform](docs/waveform.png)
 
 ## FSM State Diagram
-    reset
-       │
- ┌─────▼──────┐
- │   S_RED    │◄──────────────┐
- │  red = 1   │               │
- └─────┬──────┘               │
-       │ RED_TIME          S_PED
- ┌─────▼──────┐               │
- │  S_GREEN   │           ┌───┴────┐
- │  green = 1 │           │ S_PED  │
- └─────┬──────┘           │ red=1  │
-       │ GREEN_TIME       │ walk=1 │
- ┌─────▼──────┐           └───▲────┘
- │  S_YELLOW  │               │
- │ yellow = 1 ├───ped_req─────┘
- └─────┬──────┘
-       │ (no ped_req)
-       └──────────────────────┘
-             (back to RED)
+
+| State | Outputs | Duration | Next State |
+|-------|---------|----------|------------|
+| S_RED | red=1 | RED_TIME cycles | S_GREEN |
+| S_GREEN | green=1 | GREEN_TIME cycles | S_YELLOW |
+| S_YELLOW | yellow=1 | YELLOW_TIME cycles | S_PED (if ped_req) or S_RED |
+| S_PED | red=1, ped_walk=1 | PED_TIME cycles | S_RED |
 
 ## Simulation Results
 The testbench verified the following scenarios:
